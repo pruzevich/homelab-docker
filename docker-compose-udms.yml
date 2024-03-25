@@ -22,12 +22,8 @@ secrets:
     file: $DOCKERDIR/secrets/cf_dns_api_token
   plex_claim:
     file: $DOCKERDIR/secrets/plex_claim
-
 include:
   ########################################### SERVICES
-
-  # udms = Ultimate Docker Media Server (the guide I am following)
-
   # CORE
   - compose/traefik.yml
   - compose/socket-proxy.yml
