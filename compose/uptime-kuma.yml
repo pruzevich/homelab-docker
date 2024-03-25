@@ -1,0 +1,28 @@
+services:
+  # Uptime Kuma - Status Page & Monitoring Server
+  uptime-kuma:
+    image: louislam/uptime-kuma
+    container_name: uptime-kuma
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    #profiles: ["core", "all"]
+    networks:
+      - t2_proxy
+      - socket_proxy
+    ports:
+      - 3001:3001
+    volumes:
+      - $DOCKERDIR/appdata/uptime-kuma:/app/data
+      - /var/run/docker.sock:/var/run/docker.sock #required for Kuma to look into other containers, will not be used in the future
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.uptime-kuma-rtr.entrypoints=websecure"
+      - "traefik.http.routers.uptime-kuma-rtr.rule=Host(`kuma.$DOMAINNAME_1`)"
+      # Middlewares
+      #- "traefik.http.routers.uptime-kuma-rtr.middlewares=chain-oauth@file"
+      - "traefik.http.routers.traefik-rtr.middlewares=chain-basic-auth@file"
+      # HTTP Services
+      - "traefik.http.routers.uptime-kuma-rtr.service=uptime-kuma-svc"
+      - "traefik.http.services.uptime-kuma-svc.loadbalancer.server.port=3001"

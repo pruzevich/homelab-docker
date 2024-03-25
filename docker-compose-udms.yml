@@ -1,0 +1,44 @@
+############################################ NETWORKS
+networks:
+  default:
+    driver: bridge
+  socket_proxy:
+      name: socket_proxy
+      driver: bridge
+      ipam:
+        config:
+          - subnet: 192.168.91.0/24
+  t2_proxy:
+    name: t2_proxy
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.90.0/24
+############################################# SECRETS
+secrets:
+  basic_auth_credentials:
+    file: $DOCKERDIR/secrets/basic_auth_credentials
+  cf_dns_api_token:
+    file: $DOCKERDIR/secrets/cf_dns_api_token
+  plex_claim:
+    file: $DOCKERDIR/secrets/plex_claim
+
+include:
+  ########################################### SERVICES
+
+  # udms = Ultimate Docker Media Server (the guide I am following)
+
+  # CORE
+  - compose/traefik.yml
+  - compose/socket-proxy.yml
+  - compose/portainer.yml
+  - compose/dozzle.yml
+  - compose/homepage.yml
+  # MEDIA
+  - compose/plex.yml
+  - compose/stash.yml
+  - compose/tautulli.yml
+  # MONITORING
+  - compose/uptime-kuma.yml
+  # WEBSITE
+  - compose/nginx.yml

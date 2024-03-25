@@ -1,0 +1,5 @@
+# what folders to ignore in Github
+
+appdata/
+secrets/
+logs/

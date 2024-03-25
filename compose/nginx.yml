@@ -1,0 +1,33 @@
+services:
+  # Nginx - Web Server
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    security_opt:
+      - no-new-privileges:true
+    restart: unless-stopped
+    #profiles: ["core", "all"]
+    networks:
+      - t2_proxy
+    #depends_on:
+    #  - php7
+    #  - redis
+    volumes:
+      - /var/www/html/ruzevich.com:/usr/share/nginx/html:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      #- $DOCKERDIR/logs/udms/nginx:/var/log/nginx
+      #- $DOCKERDIR/appdata/nginx:/etc/nginx
+      #- $DOCKERDIR/appdata/sites/html:/var/www/html/
+    secrets:
+      - basic_auth_credentials
+    labels:
+      - "traefik.enable=true"
+      # HTTP Routers
+      - "traefik.http.routers.nginx.entrypoints=websecure"
+      - "traefik.http.routers.nginx.rule=Host(`peter.$DOMAINNAME_1`)"
+      # Middlewares
+      - "traefik.http.routers.nginx.middlewares=chain-no-auth@file"
+      # HTTP Services
+      - "traefik.http.routers.nginx.service=nginx-svc"
+      - "traefik.http.services.nginx-svc.loadbalancer.server.port=80"
