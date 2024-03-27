@@ -21,8 +21,8 @@ services:
       PGID: $PGID
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.tautulli-rtr.entrypoints=websecure"
-      - "traefik.http.routers.tautulli-rtr.rule=Host(`tautulli.$DOMAINNAME_1`)"
-      - "traefik.http.routers.tautulli-rtr.middlewares=chain-basic-auth@file"
-      - "traefik.http.routers.tautulli-rtr.service=tautulli-svc"
+      - "traefik.http.routers.tautulli.entrypoints=websecure"
+      - "traefik.http.routers.tautulli.rule=Host(`tautulli.$DOMAINNAME_1`)"
+      - "traefik.http.routers.tautulli.middlewares=chain-basic-auth@file"
+      - "traefik.http.routers.tautulli.service=tautulli-svc"
       - "traefik.http.services.tautulli-svc.loadbalancer.server.port=8181"
