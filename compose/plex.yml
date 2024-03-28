@@ -21,7 +21,7 @@ services:
       - "3005:3005/tcp"
       - "8324:8324/tcp"
       - "32469:32469/tcp"
-      - "1900:1900/udp" # conflicts with xTeVe and Synology default ports
+      - "1900:1900/udp"
       - "32410:32410/udp"
       - "32412:32412/udp"
       - "32413:32413/udp"
@@ -36,11 +36,11 @@ services:
       #- /dev/shm:/transcode  #offload transcoding to RAM if you have enough
     environment:
       TZ: $TZ
-      HOSTNAME: "PeachyPlex"
+      HOSTNAME: "Peachy's Plex"
       PLEX_CLAIM_FILE: /run/secrets/plex_claim
       PLEX_UID: $PUID
       PLEX_GID: $PGID
-      ADVERTISE_IP: "http://$SERVER_IP:32400/" ##"http://$SERVER_IP1:32400/,http://$SERVER_IP2:32400,https://splex.$DOMAINNAME_HS,https://splex.$DOMAINNAME_DS918,http://$ZEROTIER_IP_SYNOLOGY:32400/"
+      ADVERTISE_IP: "http://$SERVER_IP:32400/"
       ALLOWED_NETWORKS: $LOCAL_IPS
       NVIDIA_VISIBLE_DEVICES: all
       NVIDIA_DRIVER_CAPABILITIES: all
@@ -50,7 +50,7 @@ services:
      # - "traefik.enable=true"
       ## HTTP Routers
       #- "traefik.http.routers.plex-rtr.entrypoints=https"
-      #- "traefik.http.routers.plex-rtr.rule=Host(`PeachyPlex.$DOMAINNAME_1`)"
+      #- "traefik.http.routers.plex-rtr.rule=Host(`plex.$DOMAINNAME_1`)"
       ## Middlewares
       #- "traefik.http.routers.plex-rtr.middlewares=chain-no-auth@file"
       ## HTTP Services

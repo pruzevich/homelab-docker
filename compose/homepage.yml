@@ -12,7 +12,6 @@ services:
       - socket_proxy
     ports:
       - "3000:3000"
-    env_file: .env
     volumes:
       - $DOCKERDIR/appdata/homepage:/app/config
     environment:
