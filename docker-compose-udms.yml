@@ -22,6 +22,12 @@ secrets:
     file: $DOCKERDIR/secrets/cf_dns_api_token
   plex_claim:
     file: $DOCKERDIR/secrets/plex_claim
+  authelia_jwt_secret:
+    file: $DOCKERDIR/secrets/authelia_jwt_secret
+  authelia_session_secret:
+    file: $DOCKERDIR/secrets/authelia_session_secret
+  authelia_storage_encryption_key:
+    file: $DOCKERDIR/secrets/authelia_storage_encryption_key
 include:
   ########################################### SERVICES
   # CORE
@@ -38,3 +44,5 @@ include:
   - compose/uptime-kuma.yml
   # WEBSITE
   - compose/nginx.yml
+  # SECURITY
+  - compose/authelia.yml
