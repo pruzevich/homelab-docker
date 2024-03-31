@@ -110,4 +110,5 @@ services:
       # Services - API
       - "traefik.http.routers.traefik.service=api@internal"
       # Middlewares
-      - "traefik.http.routers.traefik.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      #- "traefik.http.routers.traefik.middlewares=chain-basic-auth@file" # For Basic HTTP Authentication
+      - "traefik.http.routers.tautulli.middlewares=chain-authelia@file"

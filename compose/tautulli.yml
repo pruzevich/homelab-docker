@@ -23,6 +23,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.tautulli.entrypoints=websecure"
       - "traefik.http.routers.tautulli.rule=Host(`tautulli.$DOMAINNAME_1`)"
-      - "traefik.http.routers.tautulli.middlewares=chain-basic-auth@file"
+      #- "traefik.http.routers.tautulli.middlewares=chain-basic-auth@file" ## HTTP Basic Auth
+      - "traefik.http.routers.tautulli.middlewares=chain-authelia@file"
       - "traefik.http.routers.tautulli.service=tautulli-svc"
       - "traefik.http.services.tautulli-svc.loadbalancer.server.port=8181"
