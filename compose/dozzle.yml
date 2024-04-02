@@ -23,12 +23,12 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTP Routers
-      - "traefik.http.routers.dozzle-rtr.entrypoints=websecure"
-      - "traefik.http.routers.dozzle-rtr.rule=Host(`dozzle.$DOMAINNAME_1`)"
+      - "traefik.http.routers.dozzle.entrypoints=websecure"
+      - "traefik.http.routers.dozzle.rule=Host(`dozzle.$DOMAINNAME_1`)"
       # Middlewares
-      - "traefik.http.routers.dozzle-rtr.middlewares=chain-basic-auth@file"
+      - "traefik.http.routers.dozzle.middlewares=chain-authelia@file"
       # HTTP Services
-      - "traefik.http.routers.dozzle-rtr.service=dozzle-svc"
+      - "traefik.http.routers.dozzle.service=dozzle-svc"
       - "traefik.http.services.dozzle-svc.loadbalancer.server.port=8080"
 
 
