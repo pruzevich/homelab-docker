@@ -46,3 +46,5 @@ include:
   - compose/nginx.yml
   # SECURITY
   - compose/authelia.yml
+  # OTHER
+  #- compose/mariadb.yml
