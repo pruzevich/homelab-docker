@@ -56,21 +56,6 @@ services:
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.provider=cloudflare
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.resolvers=1.1.1.1:53,1.0.0.1:53
       - --certificatesResolvers.dns-cloudflare.acme.dnsChallenge.delayBeforeCheck=90 # To delay DNS check and reduce LE hitrate
-      # - --metrics.prometheus=true
-      # - --metrics.prometheus.buckets=0.1,0.3,1.2,5.0
-      # - --metrics.prometheus.addEntryPointsLabels=true
-      # - --metrics.prometheus.addrouterslabels=true
-      # - --metrics.prometheus.addServicesLabels=true
-      # - --metrics.influxdb2=true
-      # - --metrics.influxdb2.address=http://192.168.1.111:8086
-      # - --metrics.influxdb2.token=$INFLUXDB_TOKEN
-      # - --metrics.influxdb2.org=zHome
-      # - --metrics.influxdb2.bucket=traefik-hs
-      # - --metrics.influxdb2.addEntryPointsLabels=true
-      # - --metrics.influxdb2.addrouterslabels=true
-      # - --metrics.influxdb2.addServicesLabels=true
-      # - --metrics.influxdb2.pushInterval=30s
-      # - --metrics.influxdb2.additionallabels.host=$DOMAINNAME_HS
     #healthcheck:
     #  test: ["CMD", "traefik", "healthcheck", "--ping"]
     #  interval: 5s
