@@ -9,7 +9,8 @@ services:
     restart: unless-stopped
     # profiles: ["media", "all"]
     networks:
-      - default
+      - socket_proxy
+      - t2_proxy
     ports:
       - "8181:8181"
     volumes:
