@@ -48,3 +48,4 @@ include:
   - compose/authelia.yml
   # OTHER
   #- compose/mariadb.yml
+  - compose/obsidian.yml
