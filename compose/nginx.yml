@@ -16,7 +16,7 @@ services:
       - /var/www/html/ruzevich.com:/usr/share/nginx/html:ro
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro
-      #- $DOCKERDIR/logs/udms/nginx:/var/log/nginx
+      #- $DOCKERDIR/logs/nginx:/var/log/nginx
       #- $DOCKERDIR/appdata/nginx:/etc/nginx
       #- $DOCKERDIR/appdata/sites/html:/var/www/html/
     secrets:
